@@ -1,6 +1,6 @@
 %%raw(`import './App.css';`)
 
-@bs.module("./logo.png") external logo: string = "default"
+@bs.module("../../res/logo.png") external logo: string = "default"
 
 @react.component
 let make = () => {
