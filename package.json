@@ -20,6 +20,8 @@
     "reason-react": "^0.9.1",
     "rescript-future": "^1.0.4",
     "rescript-request": "^1.0.2",
+    "recoil": "^0.1.2",
+    "rescript-recoil": "^0.11.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

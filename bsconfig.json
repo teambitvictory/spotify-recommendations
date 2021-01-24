@@ -25,7 +25,8 @@
     "@jsiebern/bs-material-ui",
     "rescript-request",
     "rescript-future",
-    "bs-webapi"
+    "bs-webapi",
+    "rescript-recoil"
   ],
   "bs-dev-dependencies": [
     "@glennsl/bs-jest",

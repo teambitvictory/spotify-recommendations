@@ -9461,6 +9461,11 @@ reason-react@^0.9.1:
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.9.1.tgz#30a887158200b659aa03e2d75ff4cc54dc462bb0"
   integrity sha512-nlH0O2TDy9KzOLOW+vlEQk4ExHOeciyzFdoLcsmmiit6hx6H5+CVDrwJ+8aiaLT/kqK5xFOjy4PS7PftWz4plA==
 
+recoil@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.1.2.tgz#844c612f535826dbe54c977761a67ded16f6d063"
+  integrity sha512-hIRrHlkmW4yITlBFprVYjVPhzPKYrJKoaDrrJtAtbkMeXfXaa/XE5OlyR10n+rNfnKWNToCKb3Z4fo86IGjkzg==
+
 recursive-readdir@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
@@ -9647,6 +9652,11 @@ rescript-future@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/rescript-future/-/rescript-future-1.0.4.tgz#8d80d4e5da3cca31887f361a277b816fbcc5ca1f"
   integrity sha512-1p9ieIdSKP4lktDf1H6Un54SXIuIxVRP7YPbueAi2rO8Jcb3NSmxADiJi+6fvfojGHKznmCm3DlCso+w/zO0YQ==
+
+rescript-recoil@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/rescript-recoil/-/rescript-recoil-0.11.1.tgz#30b716c840e5d1d2e11d89115c92c9abb903e766"
+  integrity sha512-bPuthaxch9egy0FGMqgsBSAKkF7U26qlem0XkXfr8ZraXkbXdgGGxlvqC69MEu4xMilT7GktNdTT/+OdX6XRbA==
 
 rescript-request@^1.0.2:
   version "1.0.2"
