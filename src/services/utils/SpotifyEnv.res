@@ -4,9 +4,6 @@ open UUIDType;
 
 let baseUrl = "https://api.spotify.com/v1"
 let clientId = "2e53e2a82ee64c4dbf48f4936ae1bb02";
-let responseType = "token";
-let redirectUrl = "http://localhost:3000/";
-let scopes = "playlist-modify-private";
 let stateIdKey = "sessionId"
 let tokenKey = "accessToken"
 
@@ -22,9 +19,12 @@ let stateId = () => {
     }
 }
 
-let authorizeUrl = createUrl("https://accounts.spotify.com/authorize?");
-authorizeUrl->searchParams->set_("client_id", clientId);
-authorizeUrl->searchParams->set_("response_type", "token");
-authorizeUrl->searchParams->set_("redirect_uri", redirectUrl);
-authorizeUrl->searchParams->set_("scope", scopes);
-authorizeUrl->searchParams->set_("state", stateId());
+let authParams = {
+    "client_id": clientId,
+    "response_type": "token",
+    "redirect_uri": "http://localhost:3000/",
+    "scope": "playlist-modify-private",
+    "state": stateId() 
+}->createUrlSearchParams->Js.String2.make
+
+let authorizeUrl = ("https://accounts.spotify.com/authorize?" ++ authParams)

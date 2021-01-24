@@ -1,7 +1,7 @@
 open Js.String2;
 open Webapi.Dom;
 
-let authorize = () => SpotifyEnv.authorizeUrl->UrlType.href->Location.replace(location)
+let authorize = () => SpotifyEnv.authorizeUrl->Location.replace(location)
 
 let getTokenFromCallback = () => {
     let parameter = location
