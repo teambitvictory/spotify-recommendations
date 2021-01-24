@@ -1,15 +1,12 @@
-open Type;
+@bs.val external localStorage: Dom.Storage2.t = "localStorage"
+open UrlType;
+open UUIDType;
 
 let baseUrl = "https://api.spotify.com/v1"
-
 let clientId = "2e53e2a82ee64c4dbf48f4936ae1bb02";
-
 let responseType = "token";
-
 let redirectUrl = "http://localhost:3000/";
-
 let scopes = "playlist-modify-private";
-
 let stateIdKey = "sessionId"
 let tokenKey = "accessToken"
 
