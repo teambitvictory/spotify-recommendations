@@ -12,11 +12,14 @@
     "@testing-library/user-event": "^12.2.2",
     "bs-platform": "^8.3.3",
     "bs-react-testing-library": "^0.8.0",
+    "bs-webapi": "^0.19.1",
     "npm-run-all": "^4.1.5",
     "react": "^0.0.0-experimental-27659559e",
     "react-dom": "^0.0.0-experimental-27659559e",
     "react-scripts": "^4.0.1",
     "reason-react": "^0.9.1",
+    "rescript-future": "^1.0.4",
+    "rescript-request": "^1.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
