@@ -1,11 +1,17 @@
 @react.component
 let make = () => {
   let (searchTerm, setSearchTerm) = React.useState(() => "")
-  let items = SpotifyService.getSearchResults(searchTerm)
+  let debouncedSearchTerm = Hooks.useDebounce(searchTerm, 400)
+  let (items, setItems) = React.useState(() => [])
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
   }
+
+  React.useEffect1(() => {
+    setItems(_ => SpotifyService.getSearchResults(debouncedSearchTerm))
+    None
+  }, [debouncedSearchTerm])
 
   open MaterialUi
   <div>
@@ -17,6 +23,7 @@ let make = () => {
         variant=#Outlined
       />
     </form>
+    <p> {debouncedSearchTerm->React.string} </p>
     {items
     ->Array.map(item => {
       let id = switch item {
