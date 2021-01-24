@@ -2,5 +2,5 @@
 
 @react.component
 let make = () => {
-  <> <Logo /> <MainContainer /> </>
+  <Recoil.RecoilRoot> <Logo /> <MainContainer /> </Recoil.RecoilRoot>
 }
