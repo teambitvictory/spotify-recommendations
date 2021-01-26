@@ -1,7 +1,6 @@
 type genre = {
   id: string,
-  name: string,
-  image: string,
+  name: string
 }
 
 type artist = {

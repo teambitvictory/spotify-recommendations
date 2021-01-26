@@ -8,6 +8,7 @@ let tokenKey = "accessToken"
 
 let baseUrl = "https://api.spotify.com/v1"
 let searchUrl = baseUrl ++ "/search?"
+let genresUrl = baseUrl ++ "/recommendations/available-genre-seeds"
 
 let stateId = () => {
     let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)

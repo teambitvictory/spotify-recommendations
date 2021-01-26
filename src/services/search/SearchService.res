@@ -11,7 +11,7 @@ let make = (token: string) => {
         }->createUrlSearchParams->Js.String2.make
         Request.make(~url=SpotifyEnv.searchUrl ++ queryParam, ~responseType=JsonAsAny: Request.responseType<SearchResponse.response>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
-            -> Future.mapResult(~propagateCancel=true, SearchRequestMapper.mapResponseToItem)
+            -> Future.mapResult(~propagateCancel=true, SearchResponseMapper.mapResponseToItem)
     }
 
 }
