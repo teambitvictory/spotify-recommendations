@@ -1,7 +1,12 @@
+type responseError = {
+  message: string
+}
+
 type error =
   | Empty
   | NetworkError
   | Timeout
+  | ResponseError(responseError)
 
 let mapError = error => {
   switch error {

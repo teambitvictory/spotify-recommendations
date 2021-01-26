@@ -28,15 +28,21 @@ let mapSearchTrackToItemTrack = (track: SearchResponse.trackItem) => {
   item
 }
 
-let mapResponseToItem = ({Request.response: response}) => {
-  switch response {
-  | None => Error(RequestMapper.Empty)
-  | Some(value) => {
-      let artists = value.SearchResponse.artists.items->Array.map(mapSearchArtistToItemArtist)->Array.map(a => SearchItem.Artist(a))
-      let tracks = value.SearchResponse.tracks.items->Array.map(mapSearchTrackToItemTrack)->Array.map(t => SearchItem.Track(t))
-      Js.log(artists)
-      Js.log(tracks)
-      Ok(artists->Array.concat(tracks))
+let mapResponseToItem = (response) => {
+  let status = response.Request.status
+  if status !== 200 {
+    Error(RequestMapper.ResponseError({message: "Failed request with $status"}))
+  } else {
+    let response = response.Request.response
+    switch response {
+    | None => Error(RequestMapper.Empty)
+    | Some(value) => {
+        let artists = value.SearchResponse.artists.items->Array.map(mapSearchArtistToItemArtist)->Array.map(a => SearchItem.Artist(a))
+        let tracks = value.SearchResponse.tracks.items->Array.map(mapSearchTrackToItemTrack)->Array.map(t => SearchItem.Track(t))
+        Js.log(artists)
+        Js.log(tracks)
+        Ok(artists->Array.concat(tracks))
+      }
     }
   }
 }
