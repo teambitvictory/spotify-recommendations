@@ -8,7 +8,6 @@ let make = (token: string) => {
         Request.make(~url=SpotifyEnv.genresUrl, ~responseType=JsonAsAny: Request.responseType<GenresResponse.response>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
             -> Future.mapResult(~propagateCancel=true, GenresResponseMapper.mapResponseToItem)
-            -> Future.map(Js.log)
     }
 
 }
