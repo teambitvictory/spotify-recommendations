@@ -1,6 +1,6 @@
 open UrlType;
 
-let make = (token: string) => {
+let init = (token: string) => {
 
     let authHeader = Js.Dict.fromArray([("Authorization", "Bearer "++token)])
 

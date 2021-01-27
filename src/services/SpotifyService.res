@@ -3,10 +3,10 @@ type spotifyClient = {
     genres: unit => Future.t<result<array<MyRescriptApp.SearchItem.item>, MyRescriptApp.RequestMapper.error>>
 }
 
-let make = (token: string) => {
+let init = (token: string) => {
     let client: spotifyClient = {
-        search: SearchService.make(token),
-        genres: GenresService.make(token)
+        search: SearchService.init(token),
+        genres: GenresService.init(token)
     }
     client
 }
