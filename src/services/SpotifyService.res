@@ -1,12 +1,14 @@
 type spotifyClient = {
-    search: string => Future.t<result<array<MyRescriptApp.SearchItem.item>, MyRescriptApp.RequestMapper.error>>,
-    genres: unit => Future.t<result<array<MyRescriptApp.SearchItem.item>, MyRescriptApp.RequestMapper.error>>
+    getSearch: string => Future.t<result<array<Item.item>, RequestMapper.error>>,
+    getGenres: unit => Future.t<result<array<Item.item>, RequestMapper.error>>,
+    getRecommendation: array<Item.item> => Future.t<result<array<Item.item>, RequestMapper.error>>
 }
 
 let init = (token: string) => {
     let client: spotifyClient = {
-        search: SearchService.init(token),
-        genres: GenresService.init(token)
+        getSearch: SearchService.init(token),
+        getGenres: GenresService.init(token),
+        getRecommendation: RecommendationService.init(token)
     }
     client
 }
