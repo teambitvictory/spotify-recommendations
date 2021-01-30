@@ -27,8 +27,3 @@ type trackItem = {
 type trackList = {
   items: array<trackItem>,
 }
-
-type response = {
-  artists: artistList,
-  tracks: trackList
-}
