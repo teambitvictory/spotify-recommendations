@@ -1,14 +1,14 @@
 type spotifyClient = {
-    search: string => Future.t<result<array<Item.item>, RequestMapper.error>>,
-    genres: unit => Future.t<result<array<Item.item>, RequestMapper.error>>,
-    recommendation: array<Item.item> => Future.t<result<array<Item.item>, RequestMapper.error>>
+    getSearch: string => Future.t<result<array<Item.item>, RequestMapper.error>>,
+    getGenres: unit => Future.t<result<array<Item.item>, RequestMapper.error>>,
+    getRecommendation: array<Item.item> => Future.t<result<array<Item.item>, RequestMapper.error>>
 }
 
 let init = (token: string) => {
     let client: spotifyClient = {
-        search: SearchService.init(token),
-        genres: GenresService.init(token),
-        recommendation: RecommendationService.init(token)
+        getSearch: SearchService.init(token),
+        getGenres: GenresService.init(token),
+        getRecommendation: RecommendationService.init(token)
     }
     client
 }
