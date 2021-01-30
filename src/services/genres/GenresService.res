@@ -1,5 +1,3 @@
-open UrlType;
-
 type response = {
   genres: array<string>
 }

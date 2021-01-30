@@ -23,7 +23,7 @@ let mapResponseToItem = (response) => {
 let getSeedArtists = (items: array<Item.item>) => {
     items->Array.map(item=> switch item {
     | Item.Artist(_i) => Some(_i.id)
-    | other => None
+    | _ => None
     })->Array.keep(artist => switch artist {
     | Some(_a) => true
     | None => false
@@ -33,7 +33,7 @@ let getSeedArtists = (items: array<Item.item>) => {
 let getSeedTracks = (items: array<Item.item>) => {
     items->Array.map(item=> switch item {
     | Item.Track(_i) => Some(_i.id)
-    | other => None
+    | _ => None
     })->Array.keep(artist => switch artist {
     | Some(_a) => true
     | None => false
@@ -43,7 +43,7 @@ let getSeedTracks = (items: array<Item.item>) => {
 let getSeedGenres = (items: array<Item.item>) => {
     items->Array.map(item=> switch item {
     | Item.Genre(_i) => Some(_i.id)
-    | other => None
+    | _ => None
     })->Array.keep(artist => switch artist {
     | Some(_a) => true
     | None => false
