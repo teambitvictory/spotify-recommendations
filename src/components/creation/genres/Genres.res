@@ -1,4 +1,4 @@
 @react.component
 let make = () => {
-  <p> {"LOGO"->React.string} </p>
+  <p> {"Genres"->React.string} </p>
 }

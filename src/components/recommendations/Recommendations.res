@@ -1,7 +1,6 @@
 @react.component
 let make = () => {
   let (playlistName, setPlaylistName) = React.useState(() => "")
-  let items: array<SpotifyService.item> = []
 
   let changePlaylistName = (event: ReactEvent.Form.t) => {
     setPlaylistName((event->ReactEvent.Form.target)["value"])

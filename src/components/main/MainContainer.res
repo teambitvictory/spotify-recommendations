@@ -10,8 +10,11 @@ let make = () => {
     None
   }, [])
 
-  switch token->String.length > 0 {
-  | true => <div className="App"> <Dashboard /> </div>
-  | false => <Auth />
-  }
+  open MaterialUi
+  <Container maxWidth={Container.MaxWidth.sm}>
+    {switch token->String.length > 0 {
+    | true => <Dashboard />
+    | false => <Auth />
+    }}
+  </Container>
 }

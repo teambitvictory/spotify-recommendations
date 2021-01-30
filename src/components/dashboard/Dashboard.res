@@ -1,4 +1,4 @@
 @react.component
 let make = () => {
-  <div> <User /> <Search /> <Selection /> <About /> </div>
+  <div> <Header authenticated={true} /> <Creation /> <About /> </div>
 }

@@ -1,0 +1,15 @@
+.item {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.caption {
+  margin: 0 8px;
+  flex: 1;
+}
+
+.description {
+  color: gray;
+}

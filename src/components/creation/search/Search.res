@@ -3,9 +3,14 @@ let make = () => {
   let (searchTerm, setSearchTerm) = React.useState(() => "")
   let debouncedSearchTerm = Hooks.useDebounce(searchTerm, 400)
   let (items, setItems) = React.useState(() => [])
+  let (selected, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
+  }
+
+  let selectItem = item => {
+    setSelected(currentSelection => Array.concat(currentSelection, [item]))
   }
 
   React.useEffect1(() => {
@@ -17,7 +22,8 @@ let make = () => {
   <div>
     <form autoComplete="off">
       <TextField
-        label={"Search"->React.string}
+        className={"input"}
+        placeholder={"Search"}
         value={searchTerm->TextField.Value.string}
         onChange={changeSearchTerm}
         variant=#Outlined
@@ -31,7 +37,7 @@ let make = () => {
       | Artist({id}) => id
       | Genre({id}) => id
       }
-      <SearchItem item key={id} />
+      <SearchItem item onSelect={selectItem} key={id} />
     })
     ->React.array}
   </div>

@@ -4,7 +4,8 @@ let make = () => {
 
   open MaterialUi
   <div>
+    <Header authenticated={false} />
     <p> {"By connecting your Spotify account, you agree to our Privacy Policy"->React.string} </p>
-    <Button onClick={connectSpotify}> {"Connect Spotify"->React.string} </Button>
+    <Button onClick={connectSpotify}> {"Login with Spotify"->React.string} </Button>
   </div>
 }
