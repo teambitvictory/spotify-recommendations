@@ -1,41 +1,14 @@
-type genre = {
-  id: string,
-  name: string,
-  image: string,
+type spotifyClient = {
+  getSearch: string => Future.t<result<array<Item.item>, RequestMapper.error>>,
+  getGenres: unit => Future.t<result<array<Item.item>, RequestMapper.error>>,
+  getRecommendation: array<Item.item> => Future.t<result<array<Item.item>, RequestMapper.error>>,
 }
 
-type artist = {
-  id: string,
-  name: string,
-  image: string,
-}
-
-type track = {
-  id: string,
-  artists: array<artist>,
-  name: string,
-  image: string,
-}
-
-type item =
-  | Genre(genre)
-  | Artist(artist)
-  | Track(track)
-
-let getSearchResults = (searchTerm): array<item> => {
-  let sampleArtist = {
-    id: "testArtist",
-    name: "Eminem",
-    image: "",
+let init = (token: string) => {
+  let client: spotifyClient = {
+    getSearch: SearchService.init(token),
+    getGenres: GenresService.init(token),
+    getRecommendation: RecommendationService.init(token),
   }
-
-  [
-    Track({
-      id: "testTrack",
-      artists: [sampleArtist],
-      name: "Lose Yourself",
-      image: "https://i.scdn.co/image/ab67616d00004851b6ef2ebd34efb08cb76f6eec",
-    }),
-    Artist(sampleArtist),
-  ]
+  client
 }

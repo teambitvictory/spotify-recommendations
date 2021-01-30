@@ -2,10 +2,14 @@
 open UrlType;
 open UUIDType;
 
-let baseUrl = "https://api.spotify.com/v1"
 let clientId = "2e53e2a82ee64c4dbf48f4936ae1bb02";
 let stateIdKey = "sessionId"
 let tokenKey = "accessToken"
+
+let baseUrl = "https://api.spotify.com/v1"
+let searchUrl = baseUrl ++ "/search?"
+let genresUrl = baseUrl ++ "/recommendations/available-genre-seeds"
+let recommendationUrl = baseUrl ++ "/recommendations?"
 
 let stateId = () => {
     let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)
@@ -27,4 +31,4 @@ let authParams = {
     "state": stateId() 
 }->createUrlSearchParams->Js.String2.make
 
-let authorizeUrl = ("https://accounts.spotify.com/authorize?" ++ authParams)
+let authorizeUrl = "https://accounts.spotify.com/authorize?" ++ authParams
