@@ -5,5 +5,9 @@ let make = (~item, ~id, ~onRemove) => {
   }
 
   open MaterialUi
-  <Item item control={<Button onClick={removeItem}> {"Remove"->React.string} </Button>} />
+  <ItemComponent
+    item
+    showGenreLabel={true}
+    control={<Button onClick={removeItem}> {"Remove"->React.string} </Button>}
+  />
 }

@@ -15,7 +15,6 @@ let make = () => {
     )
   }
 
-  open MaterialUi
   <div>
     {items
     ->Array.map(item => {
@@ -27,6 +26,5 @@ let make = () => {
       <SelectionItem item onRemove={removeItem} id={id} key={id} />
     })
     ->React.array}
-    <Button variant=#Contained color=#Primary> {"Generate recommendations"->React.string} </Button>
   </div>
 }

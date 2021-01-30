@@ -1,6 +1,17 @@
 @react.component
-let make = () => {
+let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   let (selectedTab, setSelectedTab) = React.useState(_ => 0)
+  let selected = Recoil.useRecoilValue(SelectionState.selectionState)
+  let (_, setRecommendations) = Recoil.useRecoilState(RecommendationsState.recommendationsState)
+
+  let generate = _ => {
+    spotifyClient.getRecommendation(selected)->Future.get(response => {
+      switch response {
+      | Ok(results) => setRecommendations(_ => results)
+      | Error(_e) => Js.log(_e)
+      }
+    })
+  }
 
   open MaterialUi
   let selectTab = (_, newTab: MaterialUi_Types.any) => {
@@ -24,11 +35,14 @@ let make = () => {
       <Tab label={"Genres"->React.string} />
     </Tabs>
     {switch selectedTab {
-    | 0 => <Search />
-    | 1 => <Genres />
+    | 0 => <Search spotifyClient={spotifyClient} />
+    | 1 => <Genres spotifyClient={spotifyClient} />
     | _ => React.null
     }}
     <Typography> {"Your selection"->React.string} </Typography>
     <Selection />
+    <Button variant=#Contained color=#Primary onClick={generate}>
+      {"Generate recommendations"->React.string}
+    </Button>
   </div>
 }

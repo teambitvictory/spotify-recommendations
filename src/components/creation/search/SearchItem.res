@@ -5,5 +5,7 @@ let make = (~item, ~onSelect) => {
   }
 
   open MaterialUi
-  <Item item control={<Button onClick={addItem}> {"Add"->React.string} </Button>} />
+  <ItemComponent
+    item showGenreLabel={false} control={<Button onClick={addItem}> {"Add"->React.string} </Button>}
+  />
 }

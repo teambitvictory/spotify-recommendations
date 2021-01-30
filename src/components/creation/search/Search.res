@@ -1,9 +1,9 @@
 @react.component
-let make = () => {
+let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   let (searchTerm, setSearchTerm) = React.useState(() => "")
   let debouncedSearchTerm = Hooks.useDebounce(searchTerm, 400)
   let (items, setItems) = React.useState(() => [])
-  let (selected, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
+  let (_, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
@@ -14,7 +14,16 @@ let make = () => {
   }
 
   React.useEffect1(() => {
-    setItems(_ => SpotifyService.getSearchResults(debouncedSearchTerm))
+    switch debouncedSearchTerm {
+    | "" => setItems(_ => [])
+    | _ =>
+      spotifyClient.getSearch(debouncedSearchTerm)->Future.get(response => {
+        switch response {
+        | Ok(results) => setItems(_ => results)
+        | Error(_e) => Js.log(_e)
+        }
+      })
+    }
     None
   }, [debouncedSearchTerm])
 
