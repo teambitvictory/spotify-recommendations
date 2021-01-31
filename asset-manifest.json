@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/spotigen/static/css/main.d75857cd.chunk.css",
+    "main.js": "/spotigen/static/js/main.12fa2ea2.chunk.js",
+    "main.js.map": "/spotigen/static/js/main.12fa2ea2.chunk.js.map",
+    "runtime-main.js": "/spotigen/static/js/runtime-main.ad11aaac.js",
+    "runtime-main.js.map": "/spotigen/static/js/runtime-main.ad11aaac.js.map",
+    "static/js/2.ef98a8be.chunk.js": "/spotigen/static/js/2.ef98a8be.chunk.js",
+    "static/js/2.ef98a8be.chunk.js.map": "/spotigen/static/js/2.ef98a8be.chunk.js.map",
+    "static/js/3.ea52c1ba.chunk.js": "/spotigen/static/js/3.ea52c1ba.chunk.js",
+    "static/js/3.ea52c1ba.chunk.js.map": "/spotigen/static/js/3.ea52c1ba.chunk.js.map",
+    "index.html": "/spotigen/index.html",
+    "static/css/main.d75857cd.chunk.css.map": "/spotigen/static/css/main.d75857cd.chunk.css.map",
+    "static/js/2.ef98a8be.chunk.js.LICENSE.txt": "/spotigen/static/js/2.ef98a8be.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad11aaac.js",
+    "static/js/2.ef98a8be.chunk.js",
+    "static/css/main.d75857cd.chunk.css",
+    "static/js/main.12fa2ea2.chunk.js"
+  ]
+}
