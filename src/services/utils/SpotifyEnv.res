@@ -15,6 +15,9 @@ let usersUrl = baseUrl ++ "/users/"
 let playlistsEndpoint = "/playlists"
 let playlistsUrl = baseUrl ++ "/playlists/"
 let tracksEndpoint = "/tracks?"
+let topUrl = usersUrl ++ "top/"
+let topArtistsEndpoint = "artists?"
+let topTracksEndpoint = "tracks?"
 
 let stateId = () => {
     let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)
@@ -32,7 +35,7 @@ let authParams = {
     "client_id": clientId,
     "response_type": "token",
     "redirect_uri": "http://localhost:3000/",
-    "scope": "playlist-modify-private",
+    "scope": "playlist-modify-private,user-top-read",
     "state": stateId() 
 }->createUrlSearchParams->Js.String2.make
 
