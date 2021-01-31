@@ -14,6 +14,7 @@ type track = {
   artists: array<artist>,
   name: string,
   image: string,
+  uri: string
 }
 
 type item =
