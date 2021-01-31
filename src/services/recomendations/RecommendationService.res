@@ -73,7 +73,6 @@ let init = (token: string) => {
 
     (items: array<Item.item>) => {
         let queryParam = generateQueryParam(items)
-        Js.log(queryParam)
         Request.make(~url=SpotifyEnv.recommendationUrl ++ queryParam, ~responseType=JsonAsAny: Request.responseType<response>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
             -> Future.mapResult(~propagateCancel=true, mapResponseToItem)
