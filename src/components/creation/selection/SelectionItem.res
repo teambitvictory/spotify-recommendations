@@ -8,6 +8,6 @@ let make = (~item, ~id, ~onRemove) => {
   <ItemComponent
     item
     showGenreLabel={true}
-    control={<Button onClick={removeItem}> {"Remove"->React.string} </Button>}
+    control={<IconButton onClick={removeItem}> <RemoveIcon /> </IconButton>}
   />
 }

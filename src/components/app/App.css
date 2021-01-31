@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.spacing {
+  margin: 16px auto;
+}
+
 .input {
   width: 100%;
 }

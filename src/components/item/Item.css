@@ -13,3 +13,8 @@
 .description {
   color: gray;
 }
+
+.cover {
+  width: 64px !important;
+  height: 64px !important;
+}

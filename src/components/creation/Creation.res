@@ -19,10 +19,12 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   }
 
   <div>
+    <Typography className={"spacing"} variant=#H4> {"Get started"->React.string} </Typography>
     <Typography>
       {"Choose tracks, genres and artists as a base for your recommendations"->React.string}
     </Typography>
     <Tabs
+      className={"spacing"}
       variant=#FullWidth
       value={selectedTab->MaterialUi_Types.Any}
       onChange={selectTab}
@@ -39,9 +41,10 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
     | 1 => <Genres spotifyClient={spotifyClient} />
     | _ => React.null
     }}
-    <Typography> {"Your selection"->React.string} </Typography>
+    <Typography variant=#H4> {"Your selection"->React.string} </Typography>
     <Selection />
-    <Button variant=#Contained color=#Primary onClick={generate}>
+    <Button
+      variant=#Contained color=#Primary disabled={selected->Array.length === 0} onClick={generate}>
       {"Generate recommendations"->React.string}
     </Button>
   </div>

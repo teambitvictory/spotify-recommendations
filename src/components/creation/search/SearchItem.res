@@ -1,11 +1,26 @@
 @react.component
-let make = (~item, ~onSelect) => {
+let make = (~item, ~added) => {
+  let (_, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
+
   let addItem = _ => {
-    onSelect(item)
+    setSelected(currentSelection => Array.concat(currentSelection, [item]))
+  }
+
+  let removeItem = _ => {
+    let (_, itemId) = ItemUtil.extractItemInfo(item)
+    setSelected(currentSelection =>
+      currentSelection->Array.keep(item => {
+        let (_, id) = ItemUtil.extractItemInfo(item)
+        id !== itemId
+      })
+    )
   }
 
   open MaterialUi
-  <ItemComponent
-    item showGenreLabel={false} control={<Button onClick={addItem}> {"Add"->React.string} </Button>}
-  />
+  let control = switch added {
+  | false => <IconButton onClick={addItem}> <AddIcon /> </IconButton>
+  | true => <IconButton onClick={removeItem}> <AddedIcon /> </IconButton>
+  }
+
+  <ItemComponent item showGenreLabel={false} control />
 }

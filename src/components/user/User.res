@@ -14,11 +14,7 @@ let make = () => {
       name={username}
       item={<Typography>
         {(username ++ " | ")->React.string}
-        <Link
-        // style={ReactDOM.Style.make(~marginLeft="8px", ())}
-          onClick={logout} href={"#"}>
-          {"Logout"->React.string}
-        </Link>
+        <Link onClick={logout} href={"#"}> {"Logout"->React.string} </Link>
       </Typography>}
     />
   </div>

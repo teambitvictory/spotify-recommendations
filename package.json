@@ -6,6 +6,7 @@
     "@glennsl/bs-jest": "^0.6.0",
     "@jsiebern/bs-material-ui": "^2.0.2",
     "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -18,10 +19,10 @@
     "react-dom": "^0.0.0-experimental-27659559e",
     "react-scripts": "^4.0.1",
     "reason-react": "^0.9.1",
-    "rescript-future": "^1.0.4",
-    "rescript-request": "^1.0.2",
     "recoil": "^0.1.2",
+    "rescript-future": "^1.0.4",
     "rescript-recoil": "^0.11.1",
+    "rescript-request": "^1.0.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

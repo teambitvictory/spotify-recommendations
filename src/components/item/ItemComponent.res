@@ -15,8 +15,9 @@ let make = (~item: Item.item, ~showGenreLabel, ~control) => {
 
   <div className={"item"}>
     {switch image {
-    | "" => React.null
-    | _ => <img src={image} />
+    | "" =>
+      <Avatar className={"cover"} variant=#Square> {Js.String2.get(name, 0)->React.string} </Avatar>
+    | _ => <img className={"cover"} src={image} />
     }}
     <div className={"caption"}>
       <Typography> {name->React.string} </Typography>

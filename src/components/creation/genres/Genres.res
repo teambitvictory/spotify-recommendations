@@ -2,15 +2,10 @@
 let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   let (items, setItems) = React.useState(() => [])
   let (searchTerm, setSearchTerm) = React.useState(() => "")
-
-  let (_, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
+  let (selected, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
-  }
-
-  let selectItem = item => {
-    setSelected(currentSelection => Array.concat(currentSelection, [item]))
   }
 
   React.useEffect1(() => {
@@ -34,21 +29,27 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
         variant=#Outlined
       />
     </form>
-    {items
-    ->Array.map(item => {
-      let id = switch item {
-      | Track({id}) => id
-      | Artist({id}) => id
-      | Genre({id}) => id
-      }
-      (item, id)
-    })
-    ->Array.keep(((_, id)) => {
-      searchTerm !== "" && id->Js.String2.includes(searchTerm)
-    })
-    ->Array.map(((item, id)) => {
-      <SearchItem item onSelect={selectItem} key={id} />
-    })
-    ->React.array}
+    <div className={"spacing"}>
+      {switch searchTerm->String.length > 0 {
+      | true =>
+        items
+        ->Array.map(ItemUtil.extractItemInfo)
+        ->Array.keep(((_, id)) => {
+          searchTerm !== "" && id->Js.String2.includes(searchTerm)
+        })
+        ->Array.map(((item, id)) => {
+          let added = selected->Array.some(itemToCheck => {
+            let (_, idToCheck) = ItemUtil.extractItemInfo(itemToCheck)
+            idToCheck === id
+          })
+          <SearchItem item added key={id} />
+        })
+        ->React.array
+      | false =>
+        <Typography style={ReactDOM.Style.make(~color="grey", ())}>
+          {"Enter a search term to select genres"}
+        </Typography>
+      }}
+    </div>
   </div>
 }

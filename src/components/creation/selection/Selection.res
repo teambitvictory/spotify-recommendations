@@ -5,26 +5,26 @@ let make = () => {
   let removeItem = itemId => {
     setItems(currentSelection =>
       currentSelection->Array.keep(item => {
-        let id = switch item {
-        | Track({id}) => id
-        | Artist({id}) => id
-        | Genre({id}) => id
-        }
+        let (_, id) = ItemUtil.extractItemInfo(item)
         id !== itemId
       })
     )
   }
 
-  <div>
-    {items
-    ->Array.map(item => {
-      let id = switch item {
-      | Track({id}) => id
-      | Artist({id}) => id
-      | Genre({id}) => id
-      }
-      <SelectionItem item onRemove={removeItem} id={id} key={id} />
-    })
-    ->React.array}
+  open MaterialUi
+  <div className={"spacing"}>
+    {switch items->Array.length > 0 {
+    | true =>
+      items
+      ->Array.map(item => {
+        let (_, id) = ItemUtil.extractItemInfo(item)
+        <SelectionItem item onRemove={removeItem} id={id} key={id} />
+      })
+      ->React.array
+    | false =>
+      <Typography style={ReactDOM.Style.make(~color="grey", ())}>
+        {"Select at least one item to generate recommendations"}
+      </Typography>
+    }}
   </div>
 }
