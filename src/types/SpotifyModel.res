@@ -22,6 +22,7 @@ type trackItem = {
   name: string,
   artists: array<artistItem>,
   album: album,
+  uri: string
 }
 
 type trackList = {

@@ -21,6 +21,7 @@ let mapSearchTrackToItemTrack = (track: SpotifyModel.trackItem) => {
     artists: track.artists->Array.map(mapSearchArtistToItemArtist),
     name: track.name,
     image: (track.album.images->getSmallestImage).url,
+    uri: track.uri
   }
   item
 }

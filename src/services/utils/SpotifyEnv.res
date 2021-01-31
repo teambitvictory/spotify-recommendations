@@ -10,6 +10,11 @@ let baseUrl = "https://api.spotify.com/v1"
 let searchUrl = baseUrl ++ "/search?"
 let genresUrl = baseUrl ++ "/recommendations/available-genre-seeds"
 let recommendationUrl = baseUrl ++ "/recommendations?"
+let userUrl = baseUrl ++ "/me"
+let usersUrl = baseUrl ++ "/users/"
+let playlistsEndpoint = "/playlists"
+let playlistsUrl = baseUrl ++ "/playlists/"
+let tracksEndpoint = "/tracks?"
 
 let stateId = () => {
     let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)
