@@ -1,6 +1,10 @@
-type user = {email: string, username: string}
-
 let userState = Recoil.atom({
   key: "userState",
-  default: "",
+  default: (
+    {
+      image: "",
+      id: "guest",
+      name: "Guest",
+    }: User.user
+  ),
 })

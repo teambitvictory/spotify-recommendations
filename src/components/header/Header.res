@@ -6,7 +6,7 @@ let make = (~authenticated) => {
   <div className={"header"}>
     <Typography> {"spotigen"->React.string} </Typography>
     {switch authenticated {
-    | true => <User />
+    | true => <UserComponent />
     | false => React.null
     }}
   </div>

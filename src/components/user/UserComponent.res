@@ -1,7 +1,7 @@
 @react.component
 let make = () => {
   let (_, setToken) = Recoil.useRecoilState(TokenState.tokenState)
-  let username = "Guest"
+  let user = Recoil.useRecoilValue(UserState.userState)
 
   let logout = event => {
     ReactEvent.Mouse.preventDefault(event)
@@ -11,9 +11,10 @@ let make = () => {
   open MaterialUi
   <div className={"hbox"}>
     <Person
-      name={username}
+      name={user.name}
+      image={user.image}
       item={<Typography>
-        {(username ++ " | ")->React.string}
+        {(user.name ++ " | ")->React.string}
         <Link onClick={logout} href={"#"}> {"Logout"->React.string} </Link>
       </Typography>}
     />

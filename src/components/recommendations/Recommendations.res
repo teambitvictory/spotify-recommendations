@@ -1,7 +1,8 @@
 @react.component
-let make = () => {
+let make = (~spotifyClient: SpotifyService.spotifyClient, ~onPlaylistCreated) => {
   let (playlistName, setPlaylistName) = React.useState(() => "")
   let (items, setItems) = Recoil.useRecoilState(RecommendationsState.recommendationsState)
+  let user = Recoil.useRecoilValue(UserState.userState)
 
   let changePlaylistName = (event: ReactEvent.Form.t) => {
     setPlaylistName((event->ReactEvent.Form.target)["value"])
@@ -9,6 +10,17 @@ let make = () => {
 
   let goBack = _ => {
     setItems(_ => [])
+  }
+
+  let createPlaylist = _ => {
+    spotifyClient.createPlaylist(user.id, playlistName, items)->Future.get(response => {
+      switch response {
+      | _ => {
+          goBack()
+          onPlaylistCreated()
+        }
+      }
+    })
   }
 
   open MaterialUi
@@ -23,7 +35,11 @@ let make = () => {
         placeholder={"Playlist Name"}
         variant=#Outlined
       />
-      <Button variant=#Contained color=#Primary disabled={playlistName->String.length === 0}>
+      <Button
+        onClick={createPlaylist}
+        variant=#Contained
+        color=#Primary
+        disabled={playlistName->String.length === 0}>
         {"Save in Spotify"->React.string}
       </Button>
     </div>

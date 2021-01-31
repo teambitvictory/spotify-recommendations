@@ -1395,7 +1395,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jsiebern/bs-material-ui@^2.0.2":
+"@jsiebern/bs-material-ui-lab@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@jsiebern/bs-material-ui-lab/-/bs-material-ui-lab-2.0.3.tgz#866a6b11f84099117a600fc92d6e7f3438462185"
+  integrity sha512-88JaUGfZZKsKNF9OX2867BjazLng3naUUUjebrKDtF3h3Mm2vEIMnZxkQaRjcRzFhdT6rYXdle/SvilSxO+fAQ==
+  dependencies:
+    "@jsiebern/bs-material-ui" "^2.0.0"
+
+"@jsiebern/bs-material-ui@^2.0.0", "@jsiebern/bs-material-ui@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@jsiebern/bs-material-ui/-/bs-material-ui-2.0.2.tgz#e3d32b482c62ae1eded4b418dd2313c25cd73639"
   integrity sha512-L/XJ9I6PRiBMpPgrTvLih0CeAGJAGWT4MBrULef0/CDuDRR3BJHydF11LV9cn9wyNpM3ugHr7aR28e3udtTAng==
@@ -1424,6 +1431,17 @@
   integrity sha512-fQNsKX2TxBmqIGJCSi3tGTO/gZ+eJgWmMJkgDiOfyNaunNaxcklJQFaFogYcFl0qFuaEz1qaXYXboa/bUXVSOQ==
   dependencies:
     "@babel/runtime" "^7.4.4"
+
+"@material-ui/lab@^4.0.0-alpha.57":
+  version "4.0.0-alpha.57"
+  resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-4.0.0-alpha.57.tgz#e8961bcf6449e8a8dabe84f2700daacfcafbf83a"
+  integrity sha512-qo/IuIQOmEKtzmRD2E4Aa6DB4A87kmY6h0uYhjUmrrgmEAgbbw9etXpWPVXuRK6AGIQCjFzV6WO2i21m1R4FCw==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/utils" "^4.11.2"
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+    react-is "^16.8.0 || ^17.0.0"
 
 "@material-ui/styles@^4.11.2":
   version "4.11.2"

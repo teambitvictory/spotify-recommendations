@@ -1,7 +1,7 @@
 @react.component
 let make = () => {
   open MaterialUi
-  <div>
+  <div style={ReactDOM.Style.make(~marginTop="32px", ())}>
     <Typography> {"Created by"->React.string} </Typography>
     <Person
       name={"Damien Jochim"}
