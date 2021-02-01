@@ -29,12 +29,10 @@ let make = () => {
   open MaterialUi
   open MaterialUi_Lab
   <div>
-    <Header authenticated={true} />
     {switch recommendations->Array.length > 0 {
     | true => <Recommendations spotifyClient onPlaylistCreated />
     | false => <Creation spotifyClient />
     }}
-    <About />
     <Snackbar
       _open={snackbarOpen}
       autoHideDuration={6000->MaterialUi_Types.Number.int}

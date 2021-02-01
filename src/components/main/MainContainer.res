@@ -11,10 +11,16 @@ let make = () => {
   }, [])
 
   open MaterialUi
-  <Container maxWidth={Container.MaxWidth.sm}>
-    {switch token->String.length > 0 {
-    | true => <Dashboard />
-    | false => <Auth />
-    }}
-  </Container>
+  <div className="main-container">
+    <div className="content">
+      <Header authenticated={token->String.length > 0} />
+      <Container maxWidth={Container.MaxWidth.sm}>
+        {switch token->String.length > 0 {
+        | true => <Dashboard />
+        | false => <Auth />
+        }}
+      </Container>
+    </div>
+    <About />
+  </div>
 }
