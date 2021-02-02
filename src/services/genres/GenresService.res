@@ -1,15 +1,13 @@
-type response = {
-  genres: array<string>
-}
+type response = {genres: array<string>}
 
 let mapGenresKeyToGenresItem = (gKey: string) => {
-    Item.Genre({
-        id: gKey,
-        name: gKey
-    })
+  Item.Genre({
+    id: gKey,
+    name: gKey->Js.String2.replaceByRe(%re("/\-/g"), " ")->Js.String2.toUpperCase,
+  })
 }
 
-let mapResponseToItem = (response) => {
+let mapResponseToItem = response => {
   let status = response.Request.status
   if status !== 200 {
     Error(RequestMapper.ResponseError({message: "Failed request with $status"}))
@@ -26,13 +24,16 @@ let mapResponseToItem = (response) => {
 }
 
 let init = (token: string) => {
+  let authHeader = Js.Dict.fromArray([("Authorization", "Bearer " ++ token)])
 
-    let authHeader = Js.Dict.fromArray([("Authorization", "Bearer "++token)])
-
-    () => {
-        Request.make(~url=SpotifyEnv.genresUrl, ~responseType=JsonAsAny: Request.responseType<response>, ~headers=authHeader, ())   
-            -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
-            -> Future.mapResult(~propagateCancel=true, mapResponseToItem)
-    }
-
+  () => {
+    Request.make(
+      ~url=SpotifyEnv.genresUrl,
+      ~responseType=(JsonAsAny: Request.responseType<response>),
+      ~headers=authHeader,
+      (),
+    )
+    ->Future.mapError(~propagateCancel=true, RequestMapper.mapError)
+    ->Future.mapResult(~propagateCancel=true, mapResponseToItem)
+  }
 }

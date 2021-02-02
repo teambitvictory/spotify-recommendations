@@ -1,0 +1,10 @@
+.person {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.person-name {
+  padding-left: 8px;
+}
