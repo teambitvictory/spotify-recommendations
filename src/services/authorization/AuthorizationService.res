@@ -16,7 +16,7 @@ let getTokenFromCallback = () => {
     switch parameter->HashMap.String.get("state") {
     | Some(s) => {
         if s == SpotifyEnv.stateId() {
-            UrlType.trimmUrl();
+            UrlType.removeUrlAnchor();
             switch parameter->HashMap.String.get("access_token") {
             | Some(t) => Some(t)
             | None => None

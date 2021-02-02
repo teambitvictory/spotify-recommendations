@@ -5,7 +5,7 @@ open Location;
 type urlSearchParams;
 @bs.new external createUrlSearchParams: 'a => urlSearchParams = "URLSearchParams";
 
-let trimmUrl = () => {
+let removeUrlAnchor = () => {
     let url = origin(location)
     Js.log(url)
     replaceState(state(history), "", url, history);
