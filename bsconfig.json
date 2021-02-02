@@ -23,9 +23,11 @@
   "bs-dependencies": [
     "reason-react",
     "@jsiebern/bs-material-ui",
+    "@jsiebern/bs-material-ui-lab",
     "rescript-request",
     "rescript-future",
-    "bs-webapi"
+    "bs-webapi",
+    "rescript-recoil"
   ],
   "bs-dev-dependencies": [
     "@glennsl/bs-jest",

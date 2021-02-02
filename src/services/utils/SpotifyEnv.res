@@ -31,7 +31,7 @@ let stateId = () => {
 let authParams = {
     "client_id": clientId,
     "response_type": "token",
-    "redirect_uri": "http://localhost:3000/",
+    "redirect_uri": "https://spotigen.bitvictory.dev",
     "scope": "playlist-modify-private",
     "state": stateId() 
 }->createUrlSearchParams->Js.String2.make

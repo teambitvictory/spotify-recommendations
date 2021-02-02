@@ -67,12 +67,24 @@ let generateQueryParam = (items: array<Item.item>) => {
     queryParam->HashMap.String.toArray->createUrlSearchParams->Js.String2.make
 }
 
+let getRandomSubset = (items: array<Item.item>, numberToPick) => {
+    let n = numberToPick > items->Array.length ? items->Array.length : numberToPick
+    let shuffledItems = items->Array.shuffle
+    (
+        shuffledItems->Array.slice(~offset=0, ~len=n),
+        (shuffledItems->Array.sliceToEnd, n),
+    )
+}
+
 let init = (token: string) => {
 
     let authHeader = Js.Dict.fromArray([("Authorization", "Bearer "++token)])
 
     (items: array<Item.item>) => {
-        let queryParam = generateQueryParam(items)
+        // Make sure to send max 5 items to API at once
+        // FIXME: Send multiple requests if there are more than 5 items, collect via Future.all and select subset from final result
+        let (pickedItems, _) = getRandomSubset(items, 5)
+        let queryParam = generateQueryParam(pickedItems)
         Request.make(~url=SpotifyEnv.recommendationUrl ++ queryParam, ~responseType=JsonAsAny: Request.responseType<response>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
             -> Future.mapResult(~propagateCancel=true, mapResponseToItem)
