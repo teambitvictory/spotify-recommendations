@@ -16,7 +16,7 @@ let make = () => {
       </Typography>
       <Typography className="spacing" style={ReactDOM.Style.make(~marginBottom="16px", ())}>
         {"By connecting your Spotify account, you agree to our "->React.string}
-        <Link href="https://twitter.com/damien_jochim" target={"_blank"}>
+        <Link href="https://bitvictory.de/spotigen/privacy.md" target={"_blank"}>
           {"privacy policy"->React.string}
         </Link>
       </Typography>
