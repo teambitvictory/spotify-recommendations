@@ -23,7 +23,12 @@
 }
 
 .main-container {
-  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
 }
