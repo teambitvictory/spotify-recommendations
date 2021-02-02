@@ -1,8 +1,8 @@
 {
-  "name": "spotify-recommendations",
+  "name": "spotifgen",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://teambitvictory.github.io/spotigen",
+  "homepage": "https://spotigen.bitvictory.dev",
   "dependencies": {
     "@glennsl/bs-jest": "^0.6.0",
     "@jsiebern/bs-material-ui": "^2.0.2",
