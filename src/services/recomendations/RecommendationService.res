@@ -52,6 +52,7 @@ let getSeedGenres = (items: array<Item.item>) => {
 
 let generateQueryParam = (items: array<Item.item>) => {
     let queryParam = HashMap.String.fromArray([])
+    queryParam->HashMap.String.set("limit", "20")
     let seedArtists = getSeedArtists(items)
     if seedArtists->String.length > 0 {
         queryParam->HashMap.String.set("seed_artists", seedArtists)
