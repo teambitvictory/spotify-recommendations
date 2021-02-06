@@ -43,7 +43,7 @@ let initTopTracks = (token: string) => {
     let authHeader = Js.Dict.fromArray([("Authorization", "Bearer "++token)])
 
     () => {
-        Request.make(~url=SpotifyEnv.topUrl ++ SpotifyEnv.topTracksEndpoint ++ queryParam, ~responseType=JsonAsAny: Request.responseType<SpotifyModel.trackList>, ~headers=authHeader, ())   
+        Request.make(~url=SpotifyEnv.topTracksEndpoint ++ queryParam, ~responseType=JsonAsAny: Request.responseType<SpotifyModel.trackList>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
             -> Future.mapResult(~propagateCancel=true, mapTrackResponseToItem)
     }
@@ -54,7 +54,7 @@ let initTopArtist = (token: string) => {
     let authHeader = Js.Dict.fromArray([("Authorization", "Bearer "++token)])
 
     () => {
-        Request.make(~url=SpotifyEnv.topUrl ++ SpotifyEnv.topTracksEndpoint ++ queryParam, ~responseType=JsonAsAny: Request.responseType<SpotifyModel.artistList>, ~headers=authHeader, ())   
+        Request.make(~url=SpotifyEnv.topArtistsEndpoint ++ queryParam, ~responseType=JsonAsAny: Request.responseType<SpotifyModel.artistList>, ~headers=authHeader, ())   
             -> Future.mapError(~propagateCancel=true, RequestMapper.mapError)
             -> Future.mapResult(~propagateCancel=true, mapArtistResponseToItem)
     }

@@ -16,9 +16,8 @@ let usersUrl = baseUrl ++ "/users/"
 let playlistsEndpoint = "/playlists"
 let playlistsUrl = baseUrl ++ "/playlists/"
 let tracksEndpoint = "/tracks?"
-let topUrl = usersUrl ++ "top/"
-let topArtistsEndpoint = "artists?"
-let topTracksEndpoint = "tracks?"
+let topArtistsEndpoint = userUrl ++ "/top/artists?"
+let topTracksEndpoint = userUrl ++ "/top/tracks?"
 
 let stateId = () => {
   let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)
