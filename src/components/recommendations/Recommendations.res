@@ -25,7 +25,7 @@ let make = (~spotifyClient: SpotifyService.spotifyClient, ~onPlaylistCreated) =>
 
   open MaterialUi
   <div>
-    <Button onClick={goBack}> {"<- Back to selection"->React.string} </Button>
+    <Button onClick={goBack} startIcon={<BackIcon />}> {"Back to selection"->React.string} </Button>
     <Typography variant=#H4> {"Recommendations"->React.string} </Typography>
     <div className={"hbox"} style={ReactDOM.Style.make(~margin="16px auto", ())}>
       <TextField
