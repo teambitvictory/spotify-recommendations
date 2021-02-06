@@ -22,7 +22,13 @@ let mapResponseToItem = response => {
           value.tracks.items
           ->Array.map(ModelMapper.mapSearchTrackToItemTrack)
           ->Array.map(t => Item.Track(t))
-        Ok(artists->Array.concat(tracks))
+        // Often only the first artist is relevant for the search
+        let searchResults = switch artists[0] {
+        | Some(firstArtist) =>
+          [[firstArtist], tracks, artists->Array.sliceToEnd(1)]->Array.concatMany
+        | None => tracks
+        }
+        Ok(searchResults)
       }
     }
   }

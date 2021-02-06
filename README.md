@@ -1,4 +1,4 @@
-# Spotify Recommendations
+# spotigen
 
 A simple web app that allows users to select tracks, genres and artists as a seed for a playlist with suggestions. 
 

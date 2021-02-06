@@ -7,10 +7,10 @@ let make = (~item, ~added) => {
   }
 
   let removeItem = _ => {
-    let (_, itemId) = ItemUtil.extractItemInfo(item)
+    let (_, itemId, _) = ItemUtil.extractItemInfo(item)
     setSelected(currentSelection =>
       currentSelection->Array.keep(item => {
-        let (_, id) = ItemUtil.extractItemInfo(item)
+        let (_, id, _) = ItemUtil.extractItemInfo(item)
         id !== itemId
       })
     )

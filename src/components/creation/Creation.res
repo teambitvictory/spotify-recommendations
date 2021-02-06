@@ -7,7 +7,8 @@ let make = (~spotifyClient: SpotifyService.spotifyClient, ~onSeedTooSmall) => {
   let generate = _ => {
     spotifyClient.getRecommendation(selected)->Future.get(response => {
       switch response {
-      | Ok(results) => if results->Array.length > 0 {
+      | Ok(results) =>
+        if results->Array.length > 0 {
           setRecommendations(_ => results)
         } else {
           onSeedTooSmall()

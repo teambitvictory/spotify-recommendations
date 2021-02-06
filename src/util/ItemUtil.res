@@ -1,8 +1,8 @@
 let extractItemInfo = (item: Item.item) => {
-  let id = switch item {
-  | Track({id}) => id
-  | Artist({id}) => id
-  | Genre({id}) => id
+  let (id, name) = switch item {
+  | Track({id, name}) => (id, name)
+  | Artist({id, name}) => (id, name)
+  | Genre({id, name}) => (id, name)
   }
-  (item, id)
+  (item, id, name)
 }

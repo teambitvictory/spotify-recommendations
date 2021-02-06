@@ -3,7 +3,7 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   let (searchTerm, setSearchTerm) = React.useState(() => "")
   let debouncedSearchTerm = Hooks.useDebounce(searchTerm, 400)
   let (items, setItems) = React.useState(() => [])
-  let (selected, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
+  let (selected, _) = Recoil.useRecoilState(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
@@ -32,6 +32,7 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
         value={searchTerm->TextField.Value.string}
         onChange={changeSearchTerm}
         variant=#Outlined
+        _type="search"
       />
     </form>
     <div className={"spacing"}>
@@ -39,9 +40,9 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
       | true =>
         items
         ->Array.map(item => {
-          let (_, id) = ItemUtil.extractItemInfo(item)
+          let (_, id, _) = ItemUtil.extractItemInfo(item)
           let added = selected->Array.some(itemToCheck => {
-            let (_, idToCheck) = ItemUtil.extractItemInfo(itemToCheck)
+            let (_, idToCheck, _) = ItemUtil.extractItemInfo(itemToCheck)
             idToCheck === id
           })
           <SearchItem item added key={id} />

@@ -2,7 +2,7 @@
 let make = (~spotifyClient: SpotifyService.spotifyClient) => {
   let (items, setItems) = React.useState(() => [])
   let (searchTerm, setSearchTerm) = React.useState(() => "")
-  let (selected, setSelected) = Recoil.useRecoilState(SelectionState.selectionState)
+  let (selected, _) = Recoil.useRecoilState(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
@@ -27,6 +27,7 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
         value={searchTerm->TextField.Value.string}
         onChange={changeSearchTerm}
         variant=#Outlined
+        _type="search"
       />
     </form>
     <div className={"spacing"}>
@@ -34,12 +35,12 @@ let make = (~spotifyClient: SpotifyService.spotifyClient) => {
       | true =>
         items
         ->Array.map(ItemUtil.extractItemInfo)
-        ->Array.keep(((_, id)) => {
-          searchTerm !== "" && id->Js.String2.includes(searchTerm)
+        ->Array.keep(((_, _, name)) => {
+          searchTerm !== "" && name->Js.String.toLowerCase->Js.String2.includes(searchTerm)
         })
-        ->Array.map(((item, id)) => {
+        ->Array.map(((item, id, _)) => {
           let added = selected->Array.some(itemToCheck => {
-            let (_, idToCheck) = ItemUtil.extractItemInfo(itemToCheck)
+            let (_, idToCheck, _) = ItemUtil.extractItemInfo(itemToCheck)
             idToCheck === id
           })
           <SearchItem item added key={id} />
