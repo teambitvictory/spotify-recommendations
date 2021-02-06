@@ -5,7 +5,7 @@ let make = () => {
   let removeItem = itemId => {
     setItems(currentSelection =>
       currentSelection->Array.keep(item => {
-        let (_, id) = ItemUtil.extractItemInfo(item)
+        let (_, id, _) = ItemUtil.extractItemInfo(item)
         id !== itemId
       })
     )
@@ -17,7 +17,7 @@ let make = () => {
     | true =>
       items
       ->Array.map(item => {
-        let (_, id) = ItemUtil.extractItemInfo(item)
+        let (_, id, _) = ItemUtil.extractItemInfo(item)
         <SelectionItem item onRemove={removeItem} id={id} key={id} />
       })
       ->React.array

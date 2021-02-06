@@ -45,7 +45,7 @@ let make = (~spotifyClient: SpotifyService.spotifyClient, ~onPlaylistCreated) =>
     </div>
     {items
     ->Array.map(item => {
-      let (_, id) = ItemUtil.extractItemInfo(item)
+      let (_, id, _) = ItemUtil.extractItemInfo(item)
       <ItemComponent item showGenreLabel={false} control={React.null} key={id} />
     })
     ->React.array}
