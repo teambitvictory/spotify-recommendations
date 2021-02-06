@@ -1,5 +1,7 @@
 # spotigen
 
+Try it live: https://spotigen.bitvictory.dev
+
 A simple web app that allows users to select tracks, genres and artists as a seed for a playlist with suggestions. 
 
 Basically a minimalistic interface for the [Spotify Suggestions API](https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-recommendations).
