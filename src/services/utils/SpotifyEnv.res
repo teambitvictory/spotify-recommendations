@@ -16,6 +16,8 @@ let usersUrl = baseUrl ++ "/users/"
 let playlistsEndpoint = "/playlists"
 let playlistsUrl = baseUrl ++ "/playlists/"
 let tracksEndpoint = "/tracks?"
+let topArtistsEndpoint = userUrl ++ "/top/artists?"
+let topTracksEndpoint = userUrl ++ "/top/tracks?"
 
 let stateId = () => {
   let sessionId = localStorage->Dom.Storage2.getItem(stateIdKey)
@@ -36,7 +38,7 @@ let authParams =
     "redirect_uri": nodeEnv === "development"
       ? "http://localhost:3000/"
       : "https://spotigen.bitvictory.dev",
-    "scope": "playlist-modify-private",
+    "scope": "playlist-modify-private,user-top-read",
     "state": stateId(),
   }
   ->createUrlSearchParams

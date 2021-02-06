@@ -1,22 +1,11 @@
 @react.component
-let make = (~spotifyClient: SpotifyService.spotifyClient) => {
-  let (items, setItems) = React.useState(() => [])
+let make = (~items) => {
   let (searchTerm, setSearchTerm) = React.useState(() => "")
-  let (selected, _) = Recoil.useRecoilState(SelectionState.selectionState)
+  let selected = Recoil.useRecoilValue(SelectionState.selectionState)
 
   let changeSearchTerm = (event: ReactEvent.Form.t) => {
     setSearchTerm((event->ReactEvent.Form.target)["value"])
   }
-
-  React.useEffect1(() => {
-    spotifyClient.getGenres()->Future.get(response => {
-      switch response {
-      | Ok(results) => setItems(_ => results)
-      | Error(_e) => Js.log(_e)
-      }
-    })
-    None
-  }, [])
 
   open MaterialUi
   <div>
