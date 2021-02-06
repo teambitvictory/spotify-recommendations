@@ -1,11 +1,15 @@
 {
-  "name": "spotify-recommendations",
-  "version": "0.1.0",
+  "name": "spotigen",
+  "version": "0.2.0",
   "private": true,
+  "homepage": "https://spotigen.bitvictory.dev",
   "dependencies": {
     "@glennsl/bs-jest": "^0.6.0",
     "@jsiebern/bs-material-ui": "^2.0.2",
+    "@jsiebern/bs-material-ui-lab": "^2.0.3",
     "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/styles": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -13,12 +17,15 @@
     "bs-platform": "^8.3.3",
     "bs-react-testing-library": "^0.8.0",
     "bs-webapi": "^0.19.1",
+    "gh-pages": "^3.1.0",
     "npm-run-all": "^4.1.5",
     "react": "^0.0.0-experimental-27659559e",
     "react-dom": "^0.0.0-experimental-27659559e",
     "react-scripts": "^4.0.1",
     "reason-react": "^0.9.1",
+    "recoil": "^0.1.2",
     "rescript-future": "^1.0.4",
+    "rescript-recoil": "^0.11.1",
     "rescript-request": "^1.0.2",
     "web-vitals": "^1.0.1"
   },
@@ -30,7 +37,9 @@
     "postinstall": "bsb -make-world",
     "start:re": "bsb -make-world -w",
     "start:cra": "react-scripts start",
-    "prebuild": "bsb -clean-world -make-world"
+    "prebuild": "bsb -clean-world -make-world",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": null,
   "browserslist": {
